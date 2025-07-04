@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Buscar Publicación</title></head>
+<body>
+    <h1>Buscar Publicación</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="termino" placeholder="Buscar por título">
+        <button type="submit">Buscar</button>
+    </form>
+    <ul>
+        {% for p in publicaciones %}
+        <li>{{ p.titulo }} - {{ p.autor }} - {{ p.categoria }}</li>
+        {% empty %}
+        <li>No hay resultados</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
